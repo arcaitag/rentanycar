@@ -78,6 +78,17 @@ Der Ort in der Hero-Headline (`src/components/home/RotatingPlace.tsx`) erscheint
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Kanonische URL, z. B. `https://www.rentanycar.ch` (sonst Vercel-Produktions-URL) |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | `true` erlaubt Suchmaschinen. Standard: gesperrt (robots.txt und noindex) |
+| `SITE_PASSWORD` | Passwortschutz für die ganze Website (siehe unten). Fehlt die Variable, ist der Schutz aus |
+
+## Passwortschutz der Vorschau
+
+- **Wirkung:** Ist `SITE_PASSWORD` gesetzt, führt jede Seite zuerst zur Passwort-Eingabe unter `/zugang`. Nach dem richtigen Passwort geht es zur ursprünglich aufgerufenen Seite weiter. Code: `src/proxy.ts`, `src/lib/gate.ts`, `src/app/zugang/`.
+- **Cookie:** `rac_zugang`, httpOnly, 30 Tage gültig. Darin steht nur eine Prüfsumme, nie das Passwort. Ändert sich das Passwort, werden alle Cookies ungültig und alle müssen es neu eingeben.
+- **Passwort ändern:** Vercel → Projekt → Settings → Environment Variables → `SITE_PASSWORD` anpassen, danach neu deployen (Deployments → Redeploy).
+- **Schutz aufheben (Go-live):** `SITE_PASSWORD` löschen und neu deployen.
+- **Offen ohne Passwort:** `robots.txt` (sperrt Suchmaschinen aus), App-Symbole, Manifest und das Vorschaubild für Link-Vorschauen. Alles andere, auch Bilder und `sitemap.xml`, ist geschützt.
+- **Lokal:** Ohne Variable ist der Schutz aus. Zum Testen: `SITE_PASSWORD=test npm run build` und `SITE_PASSWORD=test npm start`.
+- Vercels eigener Passwortschutz (Deployment Protection) würde dasselbe tun, kostet aber extra. Darum ist der Schutz hier im Code gelöst.
 
 ## Demo-Daten ersetzen
 

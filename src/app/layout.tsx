@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileTabBar from "@/components/layout/MobileTabBar";
 import RevealObserver from "@/components/layout/RevealObserver";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import { SITE_DESCRIPTION, SITE_NAME, indexable, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -47,12 +48,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Zum Inhalt springen
         </a>
         <Providers>
-          <Header />
+          <SiteChrome>
+            <Header />
+          </SiteChrome>
           <main id="inhalt" className="flex-1">
             {children}
           </main>
-          <Footer />
-          <MobileTabBar />
+          <SiteChrome>
+            <Footer />
+            <MobileTabBar />
+          </SiteChrome>
           <RevealObserver />
         </Providers>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
