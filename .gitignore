@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.env*.local
+
+# Beim Build erzeugt (scripts/generate-assets.mjs, scripts/fetch-photos.mjs)
+/public/brand/
+/public/fahrzeuge/
+/public/illustrationen/
+/public/symbolbilder/
+/public/_auswahl/
