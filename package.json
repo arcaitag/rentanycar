@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "description": "rentanycar.ch – Frontend-MVP: Fahrzeuge von Privatpersonen und gewerblichen Anbietern mieten",
-  "engines": { "node": ">=20.9" },
+  "engines": {
+    "node": ">=20.9"
+  },
   "scripts": {
     "assets": "node scripts/generate-assets.mjs",
     "assets:force": "node scripts/generate-assets.mjs --force",
@@ -18,10 +20,10 @@
     "@fontsource-variable/manrope": "5.3.0",
     "lucide-react": "1.48.0",
     "motion": "13.4.4",
-    "next": "16.3.6",
+    "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "sharp": "0.35.4"
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@fontsource/manrope": "5.3.0",
